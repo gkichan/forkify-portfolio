@@ -7,8 +7,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
-
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { AngularFirestoreModule } from "angularfire2/firestore";
 // Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -17,12 +20,13 @@ import { LoginComponent } from './components/login/login.component';
 import { environment } from "../environments/environment";
 
 // Services
-import { AuthService } from "./services/auth.service";
-import {AngularFireAuth} from "angularfire2/auth";
 import { HomeComponent } from './components/home/home.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
-import {AppRoutingModule} from "./app-routing.module";
+import { AppRoutingModule } from "./app-routing.module";
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SearchComponent } from './components/search/search.component';
+import { SearchResultComponent } from './components/search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,10 @@ import {AppRoutingModule} from "./app-routing.module";
     LoginComponent,
     HomeComponent,
     SignupComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    NavbarComponent,
+    SearchComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +49,12 @@ import {AppRoutingModule} from "./app-routing.module";
     HttpClientModule,
     FormsModule,
     AngularFireAuthModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatToolbarModule,
+    MatAutocompleteModule,
+    MatSlideToggleModule,
+    ReactiveFormsModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
