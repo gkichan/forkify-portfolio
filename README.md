@@ -20,7 +20,7 @@ allow read, write: if request.auth != null;
 allow read, write;
 ```
 
-Home work lesson 11:
+Home work lesson 12:
 1. Реализовать shopping list
 2. Добавление в shopping list
 3. На отдельной странице вывести список покупок с возможностью удаления
