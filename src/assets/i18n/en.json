@@ -1,0 +1,17 @@
+{
+  "navbar": {
+    "homeLink": "Home",
+    "favoritesLink": "Favorites",
+    "aboutLink": "About",
+    "settingsLink": "Settings"
+  },
+  "settings": {
+    "switchLang": "Switch language"
+  }
+  ,
+  "login": {
+    "title": "Sign in",
+    "noAccount": "Don't have account?",
+    "forgotPassword": "Forgot password?"
+  }
+}

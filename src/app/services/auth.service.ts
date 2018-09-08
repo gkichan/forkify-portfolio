@@ -23,4 +23,8 @@ export class AuthService {
   resetPassword(email) {
     return this.afauth.auth.sendPasswordResetEmail(email);
   }
+
+  logout() {
+    this.afauth.auth.signOut();
+  }
 }

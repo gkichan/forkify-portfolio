@@ -3,6 +3,7 @@ import { SearchService } from "../../services/search.service";
 import { FormControl } from "@angular/forms";
 import { Observable } from "rxjs/index";
 import { map, startWith } from "rxjs/operators";
+import {SaveHistoryService} from "../../services/save-history.service";
 
 @Component({
   selector: 'app-search',
@@ -17,15 +18,20 @@ export class SearchComponent implements OnInit {
 
   @Output() getData: EventEmitter<any[]> = new EventEmitter();
   constructor(
-    private searchService: SearchService
+    private searchService: SearchService,
+    private saveHistoryService: SaveHistoryService
   ) { }
 
   ngOnInit() {
-    this.searchService.getSearchHistory().subscribe(res => this.searchHistory = res);
+    this.searchService.getSearchHistory().subscribe(res => {
+      this.searchHistory = res;
+      console.log(res);
+    });
     this.filteredOptions = this.searchControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
-    )
+    );
+    this.saveHistoryService.historyState.subscribe(state => this.saveSearch = state);
   }
 
   onSearch() {

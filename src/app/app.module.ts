@@ -12,6 +12,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AngularFirestoreModule } from "angularfire2/firestore";
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+
 // Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -27,6 +31,12 @@ import { AppRoutingModule } from "./app-routing.module";
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearchComponent } from './components/search/search.component';
 import { SearchResultComponent } from './components/search-result/search-result.component';
+import { SettingsComponent } from './components/settings/settings.component';
+import { HttpClient } from '@angular/common/http';
+
+// Helpers
+import { HttpLoaderFactory } from "./helpers/translateFactory";
+import { RecipeDetailsComponent } from './components/recipe-details/recipe-details.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +47,9 @@ import { SearchResultComponent } from './components/search-result/search-result.
     ResetPasswordComponent,
     NavbarComponent,
     SearchComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    SettingsComponent,
+    RecipeDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +66,16 @@ import { SearchResultComponent } from './components/search-result/search-result.
     MatAutocompleteModule,
     MatSlideToggleModule,
     ReactiveFormsModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MatListModule,
+    MatMenuModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

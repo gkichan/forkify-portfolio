@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SwitchLanguageService } from "../../services/switch-language.service";
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private switchLanguageService: SwitchLanguageService,
+  ) { }
 
   ngOnInit() {
+    this.switchLanguageService.setDefaultLanguage();
   }
 
 }
