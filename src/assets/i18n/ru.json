@@ -3,14 +3,32 @@
     "homeLink": "Главная",
     "favoritesLink": "Избранное",
     "aboutLink": "О приложении",
-    "settingsLink": "Настройки"
+    "settingsLink": "Настройки",
+    "exitLink": "Выход"
   },
   "settings": {
-    "switchLang": "Изменить язык"
+    "switchLang": "Изменить язык",
+    "settingsTitle": "Настройки",
+    "saveHistoryToggle": "Сохранять историю поиска:",
+    "setLang": "Язык приложения:"
   },
   "login": {
     "title": "Вход",
     "noAccount": "Нет аккаунта?",
     "forgotPassword": "Забыли пароль?"
+  },
+  "favorites": {
+    "successDelete": "Рецепт успешно удален"
+  },
+  "search-result": {
+    "successAdd": "Рецепт успешно добавлен",
+    "next": "Вперед",
+    "prev": "Назад",
+    "details": "Подробнее"
+  },
+  "home": {
+    "searchError": "Ничего не найдено по этому запросу",
+    "search": "Поиск",
+    "searchTitle": "Поиск рецептов"
   }
 }

@@ -1,4 +1,8 @@
-import {Component, OnInit, Input, OnChanges} from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
+import { FavoritesDbService } from "../../services/favorites-db.service";
+import { Recipe } from "../../models/RecipeDetails";
+import { ToastrService } from "ngx-toastr";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: 'app-search-result',
@@ -8,11 +12,15 @@ import {Component, OnInit, Input, OnChanges} from '@angular/core';
 export class SearchResultComponent implements OnChanges {
   @Input('result') searchResult;
   showRecipe = [];
-  recipePerPage = 10;
+  recipePerPage = 12;
   currentPage = 1;
   pages = 0;
 
-  constructor() { }
+  constructor(
+    private favoritesService: FavoritesDbService,
+    private toastr: ToastrService,
+    private translate: TranslateService
+  ) { }
 
   ngOnChanges() {
     this.pages = Math.ceil(this.searchResult.length / this.recipePerPage);
@@ -24,7 +32,16 @@ export class SearchResultComponent implements OnChanges {
     const start = (page - 1) * this.recipePerPage;
     const end = page * this.recipePerPage;
     this.showRecipe = this.searchResult.slice(start, end);
-    console.log(this.showRecipe);
+  }
+
+  onFavorite(recipe: Recipe) {
+    this.favoritesService.addRecipe(recipe)
+      .then(()=> {
+        this.translate.get('search-result.successAdd').subscribe(successMsg =>  this.toastr.success(successMsg));
+      })
+      .catch(err => {
+        this.toastr.error(err);
+      });
   }
 
 }

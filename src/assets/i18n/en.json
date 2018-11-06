@@ -3,15 +3,32 @@
     "homeLink": "Home",
     "favoritesLink": "Favorites",
     "aboutLink": "About",
-    "settingsLink": "Settings"
+    "settingsLink": "Settings",
+    "exitLink": "Exit"
   },
   "settings": {
-    "switchLang": "Switch language"
-  }
-  ,
+    "switchLang": "Switch language",
+    "settingsTitle": "Settings",
+    "saveHistoryToggle": "Save search history:",
+    "setLang": "App language:"
+  },
   "login": {
     "title": "Sign in",
     "noAccount": "Don't have account?",
     "forgotPassword": "Forgot password?"
+  },
+  "favorites": {
+    "successDelete": "Recipe deleted successfully"
+  },
+  "search-result": {
+    "successAdd": "Recipe added successfully",
+    "next": "Next",
+    "prev": "Prev",
+    "details": "Details"
+  },
+  "home": {
+    "searchError": "Nothing found",
+    "search": "Search",
+    "searchTitle": "Recipe searching"
   }
 }

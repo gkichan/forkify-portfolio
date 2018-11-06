@@ -15,6 +15,9 @@ import { AngularFirestoreModule } from "angularfire2/firestore";
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { MatIconModule } from '@angular/material/icon';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { ToastrModule } from 'ngx-toastr';
 
 // Components
 import { AppComponent } from './app.component';
@@ -37,6 +40,8 @@ import { HttpClient } from '@angular/common/http';
 // Helpers
 import { HttpLoaderFactory } from "./helpers/translateFactory";
 import { RecipeDetailsComponent } from './components/recipe-details/recipe-details.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +54,9 @@ import { RecipeDetailsComponent } from './components/recipe-details/recipe-detai
     SearchComponent,
     SearchResultComponent,
     SettingsComponent,
-    RecipeDetailsComponent
+    RecipeDetailsComponent,
+    FavoritesComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +82,10 @@ import { RecipeDetailsComponent } from './components/recipe-details/recipe-detai
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    MatIconModule,
+    NgxSpinnerModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

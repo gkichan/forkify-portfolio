@@ -1,9 +1,10 @@
 <mat-toolbar color="primary" class="mb-5">
-  <span class="mr-5">Forkify</span>
-  <nav class="nav">
+  <span routerLink="/" class="mr-5 brand">Forkify</span>
+  <nav class="nav full-width">
     <a class="link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ 'navbar.homeLink' | translate }}</a>
-    <a class="link">{{ 'navbar.favoritesLink' | translate }}</a>
+    <a class="link" routerLink="/favorites" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ 'navbar.favoritesLink' | translate }}</a>
     <a class="link" routerLink="/settings" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ 'navbar.settingsLink' | translate }}</a>
-    <a class="link">{{ 'navbar.aboutLink' | translate }}</a>
+    <a class="link" routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ 'navbar.aboutLink' | translate }}</a>
+    <button *ngIf="isAuth" mat-raised-button routerLink="login" class="link" (click)="onLogout()" color="primary" class="ml-auto">{{ 'navbar.exitLink' | translate }}</button>
   </nav>
 </mat-toolbar>

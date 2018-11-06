@@ -1,0 +1,27 @@
+<ngx-spinner
+  bdColor = "rgba(51, 51, 51, 0.8)"
+  size = "medium"
+  color = "#b68dff"
+  type = "pacman"
+></ngx-spinner>
+<div class="container">
+  <div class="row">
+    <div class="col-4 mb-3" *ngFor="let item of showRecipe">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ item.title }}</mat-card-title>
+          <mat-card-subtitle>{{ item.publisher }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="item.image_url" [alt]="item.title">
+        <mat-card-actions class="d-flex align-items-center justify-content-between">
+          <button mat-button routerLink="/recipes/{{ item.recipe_id }}">{{ 'search-result.details' | translate }}</button>
+          <mat-icon color="primary" class="favorite-icon" (click)="onDelete(item)">delete</mat-icon>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <div class="row mt-5 mb-5">
+    <button mat-button *ngIf="currentPage !== 1" (click)="showPage(currentPage - 1)"><mat-icon color="primary">arrow_back_ios</mat-icon> {{ 'search-result.prev' | translate }}</button>
+    <button mat-button *ngIf="pages > 1 && currentPage !== pages" (click)="showPage(currentPage + 1)" class="ml-auto">{{ 'search-result.next' | translate }} <mat-icon color="primary">arrow_forward_ios</mat-icon></button>
+  </div>
+</div>

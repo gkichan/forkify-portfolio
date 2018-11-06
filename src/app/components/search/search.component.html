@@ -1,11 +1,13 @@
 <div class="search-wrapper">
-  <mat-form-field class="w-100">
-    <input type="text" matInput placeholder="Поиск" [matAutocomplete]="history" [formControl]="searchControl">
-    <mat-autocomplete #history="matAutocomplete">
-      <mat-option *ngFor="let item of filteredOptions | async" [value]="item.name">
-        {{item.name}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-  <button mat-raised-button color="primary" (click)="onSearch()">Найти</button>
+  <form (submit)="onSearch()">
+    <mat-form-field class="w-100">
+      <input type="text" matInput placeholder="{{ 'home.search' | translate }}" [matAutocomplete]="history" [formControl]="searchControl">
+      <mat-autocomplete #history="matAutocomplete">
+        <mat-option *ngFor="let item of filteredOptions | async" [value]="item.name">
+          {{item.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">{{ 'home.search' | translate }}</button>
+  </form>
 </div>

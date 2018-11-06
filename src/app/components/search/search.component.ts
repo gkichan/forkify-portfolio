@@ -16,6 +16,7 @@ export class SearchComponent implements OnInit {
   searchHistory = [];
   filteredOptions: Observable<string[]>;
 
+  @Output() spinnerActive: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() getData: EventEmitter<any[]> = new EventEmitter();
   constructor(
     private searchService: SearchService,
@@ -25,7 +26,6 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.searchService.getSearchHistory().subscribe(res => {
       this.searchHistory = res;
-      console.log(res);
     });
     this.filteredOptions = this.searchControl.valueChanges.pipe(
       startWith(''),
@@ -35,11 +35,18 @@ export class SearchComponent implements OnInit {
   }
 
   onSearch() {
+    this.spinnerActive.emit(true);
+
     if (this.saveSearch) {
       this.searchService.saveSearchHistory(this.searchControl.value);
     }
+
     this.searchService.searchRecipe(this.searchControl.value).subscribe(res => {
+      this.spinnerActive.emit(false);
       this.getData.emit(res);
+    }, err => {
+      this.spinnerActive.emit(false);
+      this.getData.emit(err);
     });
   }
 

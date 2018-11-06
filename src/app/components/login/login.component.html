@@ -1,21 +1,38 @@
+<ngx-spinner
+  bdColor = "rgba(51, 51, 51, 0.8)"
+  size = "medium"
+  color = "#b68dff"
+  type = "pacman"
+></ngx-spinner>
 <div class="container">
   <mat-card class="auth-card">
     <mat-card-title>Login</mat-card-title>
     <form (ngSubmit)="onLogin()">
       <mat-card-content>
         <mat-form-field class="full-width">
-          <input matInput placeholder="Email" [(ngModel)]="email" name="email">
+          <input matInput placeholder="Email" [formControl]="loginForm.controls['email']" name="email">
+          <mat-error *ngIf="loginForm.controls['email'].errors?.email">
+            Email is invalid.
+          </mat-error>
+          <mat-error *ngIf="loginForm.controls['email'].errors?.required">
+            Email is required.
+          </mat-error>
         </mat-form-field>
         <mat-form-field class="full-width">
-          <input type="password" matInput placeholder="Password" [(ngModel)]="password" name="password">
+          <input type="password" matInput placeholder="Password" [formControl]="loginForm.controls['password']" name="password">
+          <mat-error *ngIf="loginForm.controls['password'].errors?.minlength">
+            At least 6 characters.
+          </mat-error>
+          <mat-error *ngIf="loginForm.controls['password'].errors?.required">
+            Password is required.
+          </mat-error>
         </mat-form-field>
-
-        <button mat-raised-button color="primary" type="submit">Login</button>
+        <div class="d-flex justify-content-between mt-3">
+          <button mat-raised-button color="primary" type="submit">Login</button>
+          <button mat-raised-button color="primary" class="d-block" routerLink="/signup">Sign up</button>
+        </div>
       </mat-card-content>
     </form>
-    <div><a routerLink="/reset-password">Reset password</a></div>
-    <div>
-      <a routerLink="/signup">Sign up</a>
-    </div>
+    <div><a routerLink="/reset-password" class="small-grey-text">Forget password?</a></div>
   </mat-card>
 </div>
