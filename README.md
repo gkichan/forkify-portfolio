@@ -1,33 +1,33 @@
-# Forkify
+Привет!
 
+Forkify - это веб приложение для поиска рецептов. Рецепты берутся с food2fork.
 
-## Development server
+---
+Внешний вид - Angular Material. Без адаптива.
+Для авторизации, хранения избранных и истории поиска используется firebase.
+Роуты защищены guard`ом от не авторизированых пользователей.
 
-Home work lesson 11:
-1. При сохранении в историю поиска нужно проверять что бы не было дублей
-2. Вывод прелодера при каждом запросе
-3. Очистить поиск после сабмита
-4. Реализовать сохранение в избранное рецептов
-5. На отдельной странице "Избранное" вывести весь список избранных рецептов
-6. В наабаре добавить кнопку выйти
+---
+В приложении можно зарегистрироваться, залогиниться\разлогиниться и сбросить пароль.
+В настройках можно изменить язык и включить сохранение истории поиска.
+Можно добавить и удалить рецепт из избранного.
 
+---
+Проект создан исключительно для демонстрации базовых навыков работы с Angular.
+  
+Hi!
+  
+Forkify is a web application for finding recipes. Recipes come from food2fork. 
 
-## Правила доступа к бд
-```javascript
-// Получит доступ только зарегестрированный пользователь
-allow read, write: if request.auth != null;
-// Что бы могли получить доступ кто угодно
-allow read, write;
-```
+---
+Appearance - Angular Material. Non adaptive.
+Firebase is used for authorization, storage of favorites and search history. 
+Routes are protected by guard from non-authorized users. 
 
-Home work lesson 12:
-1. Реализовать shopping list
-2. Добавление в shopping list
-3. На отдельной странице вывести список покупок с возможностью удаления
-4. При удалении Нужно запрашивать подтверждение 
-5. Если блюдо добавлено в избранное то кнопка должна называться удалить из избранного с подтверждением
+---
+In the application, you can sign up, log in\out and reset your password. 
+In the settings you can change the language and enable saving search history.
+You can add and remove recipe from favorites. 
 
-```javascript
-// Название рецепта или блюда, ссылка на него
-// список ингридиентов к покупке
-```
+---
+The project was created solely to demonstrate the basic skills of working with Angular.
